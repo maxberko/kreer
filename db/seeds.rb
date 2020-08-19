@@ -7,5 +7,3 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
-Question.create(description: 'jean-michel', last_name: 'bogoss', password: 'zgeg', email: 'jmbogoss@leget.com')
