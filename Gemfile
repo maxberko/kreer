@@ -21,11 +21,15 @@ gem "jbuilder", "~> 2.7"
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+gem "geocoder"
+gem "autoprefixer-rails"
+gem "font-awesome-sass"
+gem "simple_form"
 gem "devise"
+gem "pundit"
+gem "dotenv-rails", groups: [:development, :test]
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
-gem "dotenv-rails", groups: [:development, :test]
-gem "cloudinary", "~> 1.12.0"
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", ">= 1.4.2", require: false
@@ -58,3 +62,5 @@ gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 group :development, :test do
   gem "rspec-rails"
 end
+
+gem "cloudinary", "~> 1.12.0"
