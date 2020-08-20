@@ -93,13 +93,10 @@ GEM
     diff-lcs (1.4.4)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
-<<<<<<< HEAD
-=======
     dotenv (2.7.6)
     dotenv-rails (2.7.6)
       dotenv (= 2.7.6)
       railties (>= 3.2)
->>>>>>> 746c1feab071c2f54d2249760d4fdb652f0d5876
     erubi (1.9.0)
     execjs (2.7.0)
     ffi (1.13.1)
@@ -277,12 +274,8 @@ DEPENDENCIES
   capybara (>= 2.15)
   cloudinary (~> 1.12.0)
   devise
-<<<<<<< HEAD
   font-awesome-sass
   geocoder
-=======
-  dotenv-rails
->>>>>>> 746c1feab071c2f54d2249760d4fdb652f0d5876
   jbuilder (~> 2.7)
   listen (~> 3.2)
   pg (>= 0.18, < 2.0)
