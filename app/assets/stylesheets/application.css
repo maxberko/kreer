@@ -13,3 +13,9 @@
  *= require_tree .
  *= require_self
  */
+
+/*Romain; la ligne ci-dessous NAVBARTEST est juste pour travailler. Il faut la supprimer ensuite*/
+ .navbartest {
+  display: inline-flex;
+  height: 100px;
+ }
