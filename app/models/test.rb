@@ -7,4 +7,6 @@ class Test < ApplicationRecord
   acts_as_taggable_on :tags_tests
 
   validates :name, presence: true
+  validates :jobtype, presence: true
+  validates :tags_test_list, presence: true
 end
