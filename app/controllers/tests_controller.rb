@@ -15,7 +15,7 @@ class TestsController < ApplicationController
 
   def create
     @test = Test.new(test_params)
-    generate_tests_questions
+    @test.user = current_user
     if @test.save
       redirect_to test_path(@test)
     else
@@ -26,17 +26,6 @@ class TestsController < ApplicationController
   private
 
   def test_params
-    params.require(:test).permit(:name, :jobtype, :tags_test_list)
-  end
-
-  def generate_tests_questions
-    self.tags_test_list.each do |tag_test_list|
-      Question.where(tag: tag_test_list).sample(3).each do |question|
-        TestQuestion.create(
-          test: self,
-          question: question
-        )
-      end
-    end
+    params.require(:test).permit(:name, :jobtype, tag_list: [])
   end
 end

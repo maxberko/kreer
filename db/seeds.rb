@@ -7,11 +7,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
-User.destroy_all
-Test.destroy_all
+TestQuestion.destroy_all
 Question.destroy_all
-# Tag.destroy_all
+Test.destroy_all
+User.destroy_all
 
 user1 = User.create!(
   first_name: "Louis",
@@ -21,42 +20,35 @@ user1 = User.create!(
   role: "recruiter"
 )
 
-puts "#{User.count} user created"
-
-test1 = Test.create!(
-  name: "Apple",
-  jobtype: "Product Manager",
-  tags_test_list: "Pricing"
-)
-
-puts "#{Test.count} test created"
+puts "#{User.count} users created"
 
 question1 = Question.create!(
   description: "How would you price a brand new Kindle book?",
-  tags_list: "Pricing"
+  tag: "Pricing"
 )
 
 question2 = Question.create!(
   description: "How would you set success metrics for FB dating?",
-  tags_list: "Product Execution"
+  tag: "Product Execution"
 )
 
 question3 = Question.create!(
   description: "What goals would you set for growth for Facebook Lite?",
-  tags_list: "Product Execution"
+  tag: "Product Execution"
 )
 
 question4 = Question.create!(
   description: "How do you price Amazon S3 new tier?",
-  tags_list: "Pricing"
+  tag: "Pricing"
 )
+puts "#{Question.count} questions created"
 
-# tag1 = Tag.create!(
-#   name: "Pricing"
-# )
+test1 = Test.new(
+  name: "Apple",
+  jobtype: "Product Manager",
+  user: User.last
+)
+test1.tag_list.add("Pricing")
+test1.save
 
-# tag2 = Tag.create!(
-#   name: "Product Execution"
-# )
-
-# puts "#{Tag.count} created"
+puts "#{Test.count} test created"
