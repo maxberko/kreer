@@ -1,4 +1,6 @@
-<% if current_user.role == "recruiter" %>
+<%= current_user.email %>
+<%= current_user.role %>
+<% if current_user.role == "Recruiter" %>
   <%= render "shared/recruiter_dashboard" %>
   <% else %>
   <%= render "shared/candidate_dashboard" %>

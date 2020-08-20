@@ -18,6 +18,11 @@
     <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
   </div>
 
+   <div class="field">
+    <%= f.label :role %><br />
+    <%= f.select :role, ['Recruiter', 'Candidate'], :include_blank => true %>
+  </div>
+
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
