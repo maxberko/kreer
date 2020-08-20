@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_19_161928) do
+ActiveRecord::Schema.define(version: 2020_08_20_104754) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,6 +62,33 @@ ActiveRecord::Schema.define(version: 2020_08_19_161928) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "taggings", id: :serial, force: :cascade do |t|
+    t.integer "tag_id"
+    t.string "taggable_type"
+    t.integer "taggable_id"
+    t.string "tagger_type"
+    t.integer "tagger_id"
+    t.string "context", limit: 128
+    t.datetime "created_at"
+    t.index ["context"], name: "index_taggings_on_context"
+    t.index ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true
+    t.index ["tag_id"], name: "index_taggings_on_tag_id"
+    t.index ["taggable_id", "taggable_type", "context"], name: "taggings_taggable_context_idx"
+    t.index ["taggable_id", "taggable_type", "tagger_id", "context"], name: "taggings_idy"
+    t.index ["taggable_id"], name: "index_taggings_on_taggable_id"
+    t.index ["taggable_type"], name: "index_taggings_on_taggable_type"
+    t.index ["tagger_id", "tagger_type"], name: "index_taggings_on_tagger_id_and_tagger_type"
+    t.index ["tagger_id"], name: "index_taggings_on_tagger_id"
+  end
+
+  create_table "tags", id: :serial, force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer "taggings_count", default: 0
+    t.index ["name"], name: "index_tags_on_name", unique: true
+  end
+
   create_table "test_questions", force: :cascade do |t|
     t.bigint "question_id", null: false
     t.bigint "test_id", null: false
@@ -77,6 +104,7 @@ ActiveRecord::Schema.define(version: 2020_08_19_161928) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "jobtype"
     t.index ["user_id"], name: "index_tests_on_user_id"
   end
 
@@ -100,6 +128,7 @@ ActiveRecord::Schema.define(version: 2020_08_19_161928) do
   add_foreign_key "inputs", "answers"
   add_foreign_key "inputs", "test_questions"
   add_foreign_key "inputs", "users"
+  add_foreign_key "taggings", "tags"
   add_foreign_key "test_questions", "questions"
   add_foreign_key "test_questions", "tests"
   add_foreign_key "tests", "users"
