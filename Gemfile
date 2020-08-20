@@ -27,6 +27,7 @@ gem "font-awesome-sass"
 gem "simple_form"
 gem "devise"
 gem "pundit"
+gem "dotenv-rails", groups: [:development, :test]
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
