@@ -1,25 +1,60 @@
-<div class="container">
-  <h1>new test</h1>
-  <div class="row">
-    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-      <div class="form-post">
-        <%= simple_form_for(@test) do |f| %>
-        <div class="row">
-          <div class="col-xs-6">
-            <%= f.input :name, placeholder: "Give it a name" %>
-          </div>
-          <div class="col-xs-6">
-            <%= f.input :jobtype, placeholder: "Who is this for ?" %>
-          </div>
-          <div class="col-xs-6">
-            <%= f.input :tag_list, as: :check_boxes, collection: ["Pricing", "Product Execution"], label: "Select your question tags" %>
-          </div>
-        </div>
-          # <!-- Inject categories here -->
-          <%= f.submit "Next", class: "btn btn-primary"  %>
-        <% end %>
-      </div>
+<!-- 1st form part -->
+<section id="first-section" class="text-gray-700 body-font relative">
+  <div class="bg-white container px-10 py-20 mx-auto">
+    <div class="flex flex-col text-center w-full mb-10">
+      <h1 class="sm:text-3xl text-2xl font-medium title-font text-gray-900">Bring your new test to life</h1>
     </div>
-  </div>
-</div>
+        <%= simple_form_for(@test) do |f| %>
+        <div class="lg:w-1/2 md:w-2/3 mx-auto">
+          <div class="flex flex-wrap -m-2">
 
+            <div class="p-2 w-full">
+              <label class="text-gray-900 text-lg mb-1 font-medium title-font">Give it a name </label>
+              <div class= "w-full bg-gray-100 my-3 rounded border border-gray-400 focus:outline-none focus:border-indigo-500 text-base px-4 py-2" type="text">
+                <%= f.input :name, label: false, placeholder:"Apple_PMA_test" %>
+              </div>
+
+            </div>
+
+            <div class="p-2 w-full">
+              <label class="text-gray-900 text-lg mb-1 font-medium title-font">Who is this for? </label>
+                <div class="w-full bg-gray-100 my-3 rounded border border-gray-400 focus:outline-none focus:border-indigo-500 text-base px-4 py-2">
+                  <%= f.input :jobtype, label: false, collection: Test::JOBTYPES, prompt: "Product Manager Associate" %>
+                </div>
+            </div>
+
+            <div class="p-2 w-full">
+              <p id="first-btn" class="flex mx-auto text-white bg-teal-500 border-0 py-2 px-20 my-5 focus:outline-none hover:bg-teal-500 rounded text-lg">Next</p>
+            </div>
+         </div>
+        </div>
+  </div>
+</section>
+
+<!-- 2nd section -->
+<section id="second-section" class="text-gray-700 body-font relative">
+  <div class="bg-white container px-10 py-20 mx-auto">
+
+    <!-- Section title -->
+    <div class="flex flex-col text-center w-full mb-10">
+      <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">You're almost done....</h1>
+    </div>
+
+      <!-- Question selection tags -->
+        <div class="lg:w-1/2 md:w-2/3 mx-auto">
+          <div class="flex flex-wrap -m-2">
+            <div class="p-2 w-full">
+              <label class="text-gray-900 text-lg mb-1 font-medium title-font">Select your question tags </label>
+                  <%= f.input :tag_list, label: false, as: :check_boxes, collection: Question::CATEGORIES %>
+                </div>
+            </div>
+
+      <!-- submit button -->
+            <div class="p-2 w-full">
+              <%= f.submit "Submit", class: "flex mx-auto text-white bg-teal-500 border-0 py-2 px-20 my-8 focus:outline-none hover:bg-teal-500 rounded text-lg" %>
+            </div>
+            <% end %>
+         </div>
+        </div>
+  </div>
+</section>

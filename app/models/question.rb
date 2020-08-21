@@ -5,4 +5,6 @@ class Question < ApplicationRecord
   has_many :answers
 
   validates :description, presence: true
+
+  CATEGORIES = ["Pricing", "Product Execution", "Strategy", "Product Sense", "Market Research", "Product Design"]
 end
