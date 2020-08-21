@@ -13,3 +13,10 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+  z-index: 1;
+}
+.z-9 {
+  z-index: 9;
+}
